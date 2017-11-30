@@ -1,0 +1,28 @@
+<h1>new stock</h1>
+<h2>Add a Stock:</h2>
+
+ <%= form_with(model: [ @company, @company.stocks.build ]) do |form| %> 
+
+  <p>
+    <%= form.label :Name %><br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :Total_Stocks %><br>
+    <%= form.text_field :total_stocks %>
+  </p>
+    <p>
+    <%= form.label :Stocks_Available %><br>
+    <%= form.text_field :stocks_available %>
+  </p>
+    <p>
+    <%= form.label :Price %><br>
+    <%= form.text_field :price %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+  
+<% end %>
+
+<%= link_to 'Back', company_path(@company) %>

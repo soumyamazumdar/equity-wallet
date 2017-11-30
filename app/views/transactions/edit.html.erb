@@ -1,0 +1,16 @@
+<div class="container">
+  <h1 id="header"><small>sell stocks</small></h1>
+  <div class="row">
+    <div class="col-md-offset-4 col-md-4 col-sm-12 col-xs-12">      
+      <div class="sell-stocks">
+		<% @stsell = @transaction.stocks_bought %>
+		<%= form_for @transaction do |tran| %>
+		  <p>  
+		    Stocks Available: <%= tran.select :stocks_sold, options_for_select(1..@stsell), { prompt: "select" } %><br />
+		  </p>
+		  <%= tran.submit 'Sell Stock' %>
+		<% end %>   
+	  </div>
+	</div>
+  </div>
+</div>  	  	

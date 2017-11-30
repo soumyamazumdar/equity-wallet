@@ -1,0 +1,54 @@
+<div class="container"> 
+  <% if @current_user.transactions.any? %>
+	  <h1 id="header"><small><%= pluralize_without_count(@current_user.transactions.count, 'Listing Transaction', ':') %></small></h1>
+	  <div id="table_scroll">
+		  <table class="table table-hover table-dark">
+			<tr>
+				<th>User Name</th>
+				<th>Company Name</th>
+				<th>Stock Name</th>
+				<th>Stocks Bought</th>
+				<th>Stocks Sold</th>
+				<th>Remaining Stocks</th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+			<% @transactions.each do |t| %>
+			  <% if t.user_id==current_user.id %>
+				  <tr>
+				  	<td><%= @uname = User.find(t.user_id).name %></td>
+				  	<td><%= @cname = Company.find(t.comp_id).name %></td>
+				  	<td><%= @sname = Stock.find(t.stock_id).name %></td>
+				  	<td><%= t.stocks_bought %></td>
+				  	<td><%= t.stocks_sold_count %></td>
+				  	<td><%= t.stocks_bought-t.stocks_sold_count %></td>
+				  	<td><%= link_to 'Show', transaction_path(t) %></td>
+				  	<td><%= link_to_if t.stocks_sold_count<t.stocks_bought, 'Sell', edit_transaction_path(t) %></td>
+				  	<td><%= link_to 'Destroy', transaction_path(t), method: :delete, data: { confirm: 'Are you sure'} %></td>
+				  </tr>
+			   <% end %>	
+			<% end %>  
+		  </table>
+	  </div>
+	  <%= link_to transactions_view_user_transaction_path do %>
+	    <button type="button" class="btn btn-outline-light" id="btn">
+	    <span class='glyphicon glyphicon-hand-left'></span>
+	      Back
+	    </button> 
+	  <% end %>  
+   <% else %>
+        <p id="header"><b>No Transaction yet</b></p>
+        <%= link_to welcome_index_path do %>
+	      <button type="button" class="btn btn-outline-light" id="btn">
+	      <span class='glyphicon glyphicon-hand-left'></span>
+	        Back
+	      </button> 
+	    <% end %> 		  
+   <% end %>  
+</div>    
+
+
+<%#= link_to 'Back', company_path(Stock.find_by_id(@transactions.stock_id).company) %>  
+
+

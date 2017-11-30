@@ -1,0 +1,37 @@
+<div class="container">	
+  <% if @current_user.transactions.any? %>
+	  <div class="view-user-transaction">
+		  <div class="row"> 
+		    <div class="col-xs-12 col-sm-4">
+		      <%= link_to transactions_path(@transaction) do %>
+		        <div id="div_style">
+		          <p>List Transactions</p>	
+		        </div>
+		      <% end %>  
+		    </div>
+		    <div class="col-xs-12 col-sm-4">  
+		      <%= link_to transactions_companywise_stocks_bought_path do %>
+		        <div id="div_style">
+		          <p>View Companywise Details</p>	
+		        </div>
+		      <% end %>  
+		    </div>
+		    <div class="col-xs-12 col-sm-4">  
+		      <%= link_to transactions_total_purchase_sale_path do %>
+		        <div id="div_style">
+		          <p>Total Purchase/Sale</p>	
+		        </div>
+		      <% end %>  
+		    </div>  
+		  </div>  
+	  </div> 
+  <% else %>
+      <p id="header"><b>No Transactions yet</b></p>	  	 
+  <% end %> 
+	  <%= link_to welcome_index_path do %>
+	    <button type="button" class="btn btn-outline-light" id="btn">
+	    	<span class="glyphicon glyphicon-hand-left"></span>
+	    	Back
+	    </button>
+	  <% end %>  
+</div>  

@@ -1,0 +1,45 @@
+
+
+<% @tpur=0 %>
+<% @tsold=0 %>
+<% current_user.transactions.each do |i| %>
+	<% @tpur +=i.total_cost %>
+	<% @tsold += i.sold_total %>
+<% end %>
+
+<div class="container">
+    <h1 id="header"><small>Transaction Summary</small></h1>
+	<div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-6">
+	          <div id="total_purchase">
+	          	<p>Total Purcase: Rs. <%= @tpur %> /-</p>	
+	          </div>
+	        </div>
+	        <div class="col-xs-12 col-sm-6">
+	        	<div id="total_sold">
+				  <p>Total Sold: Rs. <%= @tsold %> /-</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div id="profit">
+					<% if @tsold>@tpur %>
+					  <p>Profit Amount: Rs. <%= @tsold-@tpur %> /-</p>
+					<% else %>
+					  <p>Profit Amount: 0 </p>  
+					<% end %>  
+				</div>
+			</div>
+		</div>
+	</div>
+	<%= link_to welcome_index_path do %>
+	    <button type="button" class="btn btn-outline-light" id="btn">
+	    <span class='glyphicon glyphicon-hand-left'></span>
+	      Back
+	    </button> 
+	<% end %> 
+</div>

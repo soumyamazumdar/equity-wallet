@@ -1,0 +1,27 @@
+<div class="container stock-edit"> 
+  <h1>edit stocks</h1>
+
+  <%= form_for @stock do |form| %> 
+
+    <p>
+      <%= form.label :Name %>
+      <%= form.text_field :name %>
+    </p>
+    <p>
+      <%= form.label :Total_Stocks %>
+      <%= form.text_field :total_stocks %>
+    </p>
+      <p>
+      <%= form.label :Stocks_Available %>
+      <%= form.text_field :stocks_available %>
+    </p>
+      <p>
+      <%= form.label :Price %>
+      <%= form.text_field :price %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+    
+  <% end %>
+</div>  

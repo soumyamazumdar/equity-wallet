@@ -1,0 +1,47 @@
+<div class="container">
+  <% if @current_user.transactions.any? %>
+    <h1 id="header"><b>Stock Bought Of the Listed Companies</b></h2>
+    <div id="table_scroll">
+      <table class="table table-hover table-dark">
+        <tr>
+          <th>Company Name</th>
+          <th>Amount Invested</th>
+          <th>Amount Of Stocks Sold</th>
+          <th>Amount Reedemed</th>
+          <th></th>
+        </tr>
+        <% current_user.transactions.select(:comp_id).distinct.each do |thing| %>
+        <tr>
+        	<% @tpur=0 %>
+          <% @tsold=0 %>
+        	<% @cid = thing.comp_id %>
+        	<% current_user.transactions.each do |i| %>
+            <% if i.comp_id==@cid %>
+      	    <% @tpur +=i.total_cost %>
+      	    <% @tsold += i.sold_total %>
+      	  <% end %>  
+          <% end %>
+        	<td><%= Company.find(@cid).name %></td>
+          <td><%= @tpur %></td>
+          <td><%= @tsold %></td>
+          <% if @tsold>@tpur %>
+            <td><%= @tsold-@tpur %></td>
+          <% else %>
+            <td><%= 0 %></td>
+          <% end %>    
+          <td><%= link_to 'Show', stocks_user_specific_stocks_path(c: @cid) %></td>
+        </tr>
+        <% end %>
+      </table>   
+    </div>  
+  <% else %>
+    <p id="header"><b>No Transactions yet</b></p>
+    <%= link_to welcome_index_path do %>
+      <button type="button" class="btn btn-outline-light" id="btn">
+      <span class='glyphicon glyphicon-hand-left'></span>
+        Back
+      </button> 
+    <% end %> 
+  <% end %>
+</div>     
+

@@ -1,0 +1,16 @@
+<footer id="footer">
+    <div class="container">
+      <ul>
+        <% if !logged_in? %>
+	      <li><%= link_to 'About Us', users_about_us_path %></li>
+	      <li>
+	        <%= link_to users_contact_us_path do %>
+	          <span class='glyphicon glyphicon-earphone'></span>
+	          Contact Us!
+	        <% end %>
+	    <% else %>
+	      </li><%= link_to 'Help', users_help_path %></li>
+	    <% end %>  
+	  </ul>     
+    </div>
+</footer>

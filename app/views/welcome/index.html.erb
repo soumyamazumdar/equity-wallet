@@ -1,0 +1,49 @@
+<head>
+	
+</head>
+<body>
+	<div class="container">
+		<div class="welcome-index-container">
+		  <div class="row">
+		    <% if current_user.admin? %>
+		      <div class="col-sm-6">
+		        <%= link_to companies_path do %>
+	 			  <div id="companies_and_stocks">
+	 			  	<p>Companies and Stocks</p>
+	 			  </div>
+				<% end %>
+		      </div>
+		      <div class="col-sm-6">  
+		        <%= link_to users_path do %>
+		          <div id="users">
+		            <p>Users</p>
+		          </div>
+		        <% end %>    
+		      </div>  
+		    <% else %>  
+		      <div class="col-sm-4">
+		        <%= link_to transactions_view_user_transaction_path do %>
+		          <div id="div_style">
+		          	<p>View Transaction</p>
+		          </div>
+		        <% end %>  
+		      </div>
+		      <div class="col-sm-4">
+		      	<%= link_to companies_path do %>
+		      	  <div id="div_style">
+		      	  	<p>View Companies</p>
+		      	  </div>
+		      	<% end %>  
+		      </div>
+		      <div class="col-sm-4">
+		        <%= link_to transactions_path do %>
+		          <div id="div_style">
+		            <p>stocks bought</p>
+		      	  </div>
+		        <% end %>
+		      </div>	
+		    <% end %>    
+		  </div>
+		</div>    
+	</div>	
+</body>	

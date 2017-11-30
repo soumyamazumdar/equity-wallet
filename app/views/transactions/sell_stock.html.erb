@@ -1,0 +1,19 @@
+<div class="container">
+	<h1 id="header"><b>sell stock</b></h1>
+	<div class="row">
+     <div class="col-md-offset-4 col-md-4 col-sm-12 col-xs-12">      
+       <div class="sell-stocks">
+			<%= @transaction.id %>
+
+			<% @stsell = Transaction.find(@transaction.id).stocks_bought %>
+
+			<%= form_for @transaction, :url => stocks_add_to_stock_path(t_id: @transaction), :html => {:method => :post} do |tran| %>
+			  <p>  
+			    Stocks Available: <%= tran.select :stocks_sold, options_for_select(1..@stsell), { prompt: "select" } %><br />
+			  </p>
+			  <%= tran.submit 'Sell Stock' %>
+			<% end %>   
+		</div>
+	 </div>	
+	</div>		
+</div>	

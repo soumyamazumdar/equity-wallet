@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>P1</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "application" %>
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Tangerine|Inconsolata|Droid+Sans|Sofia|Alex+Brush|Fredoka+One|Amarante|Almendra+Display">
+  </head>
+
+  <body>
+    <div id="flash_msg">
+      <% flash.each do |key, value| %>
+        <div >
+          <% key %><%= value %>
+        </div>
+      <% end %>
+    </div>  
+
+    <%= render 'layouts/navbar' %>
+    
+    <% if logged_in? %>
+      <% @user = User.find(session[:user_id]) %>           
+    <% end %>
+
+
+    <%= yield %>
+    <%= render 'layouts/stickyfooter' %>
+  </body>
+</html>

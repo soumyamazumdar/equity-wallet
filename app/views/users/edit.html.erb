@@ -1,0 +1,21 @@
+<div class="container">
+	<h1 id="header"><b>Update Profile</b></h1>
+
+	<%= render 'form' %>
+
+	<% if current_user.admin? %>
+	  <%= link_to users_path do %>
+		    <button type="button" class="btn btn-outline-light" id="btn">
+		    <span class='glyphicon glyphicon-hand-left'></span>
+		      Back
+		    </button> 
+	  <% end %> 
+	<% else %>
+	  <%= link_to welcome_index_path do %>
+		    <button type="button" class="btn btn-outline-light" id="btn">
+		    <span class='glyphicon glyphicon-hand-left'></span>
+		      Back
+		    </button> 
+	  <% end %> 
+	<% end %> 
+</div>	   

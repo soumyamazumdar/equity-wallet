@@ -1,0 +1,74 @@
+// Place all the styles related to the sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.login-box{
+   margin-top: 20px;
+   padding: 5px 0px 20px 10px;
+   border: 3px solid #f1f1f1;
+
+   label{
+   display: block;
+   padding-top: 5px ;
+   }
+
+  .actions{
+  margin-top: 20px;
+  margin-bottom: 10px;
+  }
+
+  .signup-link{
+  margin-top: 30px;
+  }
+}
+
+
+.footer-wrapper {
+    position: relative;
+    height: 50px;
+}
+
+.container{
+  position: relative;
+}
+
+.signup-box1{
+   margin-top: 20px;
+   //padding: 5px 0px 20px 0px;
+   //border: 3px solid #f1f1f1;
+   //background-color: #EDF0F3;
+
+   #text{
+   text-align: center;
+   padding: 10px 0px 20px 0px;
+   border-bottom: 1.5px solid #D1D3D5;
+   background-color: #F6F8FA;
+   }
+   #form{
+   padding: 10px 15px 10px 15px;
+   background-color: #EDF0F3;
+   }
+
+   #form_text{
+   font-weight: lighter;
+   margin-top: 8px;
+   margin-botton: 8px;
+   text-align: center;
+   }
+
+   label{
+   font-weight: lighter;
+   width: 100%;
+   display: inline-block;
+   padding-top: 5px ;
+   }
+
+   .actions{
+  margin-top: 20px;
+  margin-bottom: 10px;
+  }
+  .input{
+  width: 100%;
+  border-radius: 0px;
+  }
+}
