@@ -1,7 +1,7 @@
 <div class="container">
   <h1 id="header">Thank You <%= current_user.name %>!</h1>
   <div class="col-md-offset-4 col-md-4 col-sm-12 col-xs-12">      
-    <div class="stocks-bought-details">
+    <div class="show-details">
       <b><small>Transaction Details</small></b><br><br>
 	  <% @price = Stock.find(@transaction.stock_id).price %>
 	  <p><b>User Name:</b> <i><%= @user = User.find(@transaction.user_id).name %></i></p>

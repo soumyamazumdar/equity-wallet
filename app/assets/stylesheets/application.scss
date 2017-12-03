@@ -15,6 +15,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
 #flash_msg{
 	color: red;
 }
@@ -24,11 +25,17 @@
   #brand_logged_out{
     padding-top:8px;
   }
+  #brand_logged_out{
+  padding-top: 8px;
+  }
   span{
   background-color: white;
   color: black;
   border-radius: 5px;
   } 
+}
+.navbar-brand:hover, .navbar-brand:active, .navbar-brand:focus{
+  color: white;
 }
 #header{
 	text-align: center;
@@ -38,9 +45,13 @@
 margin-top: 15px;
   border-style: solid;
     border-color: #5DBCD2 ;
+    background-color: #F2F1F0;
+}
+#btn:hover{
+  background-color: white;
 }
 
-.stocks-bought-details, .user-details{
+.show-details{
     border: 2px solid #73AD21;
     padding: 20px; 
     width: 420px;
@@ -57,7 +68,7 @@ margin-top: 15px;
     transition: all 200ms ease-in;
     transform: scale(1);  
 }
-.stocks-bought-details:hover{
+.show-details:hover{
     box-shadow: 10px 10px 5px grey;
     z-index: 2;
     -webkit-transition: all 200ms ease-in;
@@ -72,6 +83,25 @@ margin-top: 15px;
 
 #mynav{
     background-color: #283E4A;
+    border-radius: 0;
+    .dropdown-toggle{
+    color: white;
+    margin: 0;
+    }
+.divider{
+    margin: 0;
+    }
+}
+#mynav .dropdown-toggle:hover,#mynav .dropdown-toggle:focus{
+  color: #337AB7;
+}
+#mynav .dropdown-menu-li:hover{
+}
+#mynav .dropdown-menu{
+
+  background-color: #337AB7;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .signup-box1{
@@ -125,14 +155,29 @@ margin-top: 15px;
     width: 100%;
     position: absolute;
     height: 50px;
+    padding-top: 13px;
     background-color: #283E4A;
     .footer-block {
       margin: 20px 0;
     }
     ul{
+    float: right;
     padding-left: 0px;
     }
+    #copyright{
+    float: left;
+    color: white;
+    span{
+    display: inline-block;
+    }
+    }
   }
+  #footer .inline-list-item{
+  color: white;
+  }
+  #footer .list-inline:hover{
+  color: #337AB7;
+  } 
 
   html {
   min-height: 100%;

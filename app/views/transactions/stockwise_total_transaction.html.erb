@@ -35,11 +35,6 @@
 			</div>
 		</div>
 	</div>
-		<%= link_to stocks_user_specific_stocks_path(c: Company.find_by_id(@st.company_id)) do %>
-		      <button type="button" class="btn btn-outline-light" id="btn">
-		      <span class='glyphicon glyphicon-hand-left'></span>
-		        Back
-		      </button> 
-		<% end %> 
+		<%= link_back(stocks_user_specific_stocks_path(c: Company.find_by_id(@st.company_id))) %>
 </div>	
 
