@@ -1,0 +1,23 @@
+<div class="container">
+	<h1 id="header"><small><%= pluralize_without_count(Company.find_by_id(@comp).stocks.count, 'Stock', ' ') %>Bought Of "<i><%= Company.find_by_id(@comp).name %></i>" Company</small></h1>
+	<div id="table-scroll">
+		<table>
+		  <tr>
+		    <th>Stock Name</th>
+		    <th></th>
+		  </tr>  
+		  <% Company.find_by_id(@comp).stocks.each do |i| %>
+	        <tr>
+			    <% current_user.stocks.select(:stock_id).distinct.each do |thing| %>
+			      <% @sid = thing.stock_id %>
+			      <% if i.id==@sid %>
+			        <td><%= Stock.find(@sid).name %></td>
+			        <td><%= link_to 'Show', transactions_stockwise_total_transaction_path(s: i.id) %></td>
+			      <% end %>
+			    <% end %> 
+			</tr>     
+		  <% end %>	
+		</table>
+	</div>		
+	<%= link_back(transactions_companywise_stocks_bought_path) %>
+</div>	

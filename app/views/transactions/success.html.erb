@@ -1,0 +1,29 @@
+<div class="container">
+  <h1 id="header">Thank You <%= current_user.name %>!</h1>
+  <div class="col-md-offset-4 col-md-4 col-sm-12 col-xs-12">      
+    <div class="show-details">
+      <b><small>Transaction Details</small></b><br><br>
+	  <% @price = Stock.find(@transaction.stock_id).price %>
+	  <p><b>User Name:</b> <i><%= @user = User.find(@transaction.user_id).name %></i></p>
+	  <p><b>Company Name:</b> <i><%= @comp = Company.find(@transaction.comp_id).name %></i></p>
+	  <p><b>Stock Name:</b> <i><%= @st = Stock.find(@transaction.stock_id).name %></i></p>
+	  <p><b>Stocks Bought:</b> <i><%= @transaction.stocks_bought %></i></p>
+	  <p><b>Total Cost:</b> <i><%= @tcost = @transaction.stocks_bought*@price %></i></p>
+	</div>  
+
+	<%= link_to transactions_path(@transaction) do %>
+	  <button type="button" class="btn btn-outline-light" id="btn">
+	    <span class="glyphicon glyphicon-list-alt"></span>
+	      Index Transactions
+	  </button>
+	<% end %>    
+
+	<%= link_to companies_path do %>
+    <button type="button" class="btn btn-outline-light" id="btn">
+        Buy Stock
+      </button> 
+    <% end %>
+
+  </div>
+</div>    
+

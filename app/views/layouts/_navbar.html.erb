@@ -1,0 +1,160 @@
+<nav class="navbar" role="navigation" id="mynav">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsable" data-turbolinks-permanent>
+        <span class="glyphicon glyphicon-align-justify"></span>
+        <!-- <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> -->
+      </button>
+      <% if !logged_in? %>
+        <%= link_to login_path, class: 'navbar-brand' do %>
+          <p id="brand_logged_out">Equity<span>Wallet</span></p>
+        <% end %>
+      <% else %>
+          <a class="navbar-brand" href="/"><p>Equity<span>Wallet</span></p></a>
+      <% end %>    
+    </div>
+    <div class="navbar-collapse collapse" id="navbar-collapsable">
+      
+      <% if !logged_in? %>
+        <ul class="nav navbar-nav navbar-right" id="menu">
+          <li>  
+            <%= form_for :session, url: sessions_create_path, method: :post  do |f| %>
+
+             <div style="display: inline-block;">
+               <%= f.text_field :email, placeholder: 'example@email.com' %>
+             </div>
+
+             <div style="display: inline-block;">
+               <%= f.password_field :password, placeholder: 'password' %>
+             </div>
+
+             <div class="actions" style="display: inline-block;"><%= f.submit "Log In" %></div>
+
+            <% end %>
+          </li> 
+        </ul>  
+
+      <% else %> 
+
+        <ul class="nav navbar-nav">
+          <% if current_user.admin? %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle  nav navbar-nav navbar-right" align="right" data-toggle="dropdown">Companies And Stocks<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'List Companies & Stocks', companies_path, class: 'dropdown-menu-li' %></li>
+                <li><%= link_to 'Create Company', new_company_path, class: 'dropdown-menu-li' %></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle  nav navbar-nav navbar-right" align="right" data-toggle="dropdown">Users<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'List Users', users_path, class: 'dropdown-menu-li' %></li>
+                <li><%= link_to 'Create New User', new_user_path, class: 'dropdown-menu-li' %></li>
+              </ul>
+            </li>
+          <% else %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle  nav navbar-nav navbar-right" align="right" data-toggle="dropdown">My Transactions<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'List All Transactions', transactions_path, class: 'dropdown-menu-li' %></li>
+                <li><%= link_to 'View Companywise Details', transactions_companywise_stocks_bought_path, class: 'dropdown-menu-li' %></li>
+                <li><%= link_to 'Total Purchase/Sale', transactions_total_purchase_sale_path, class: 'dropdown-menu-li' %></li>
+              </ul>
+            </li>  
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle  nav navbar-nav navbar-right" align="right" data-toggle="dropdown">View Companies<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'List All Companies', companies_path, class: 'dropdown-menu-li' %></li>
+                <li><%= link_to 'View Companywise Details', transactions_companywise_stocks_bought_path, class: 'dropdown-menu-li' %></li>
+              </ul>
+            </li> 
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle  nav navbar-nav navbar-right" align="right" data-toggle="dropdown">Stocks<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'Buy Stock(s)', companies_path, class: 'dropdown-menu-li' %></li>
+                <li><%= link_to 'List All Stocks Bought', transactions_path, class: 'dropdown-menu-li' %></li>
+              </ul>
+            </li>   
+          <% end %>
+        </ul>  
+
+      <% end %> 
+
+      <% if logged_in? %>
+        <ul class="nav navbar-nav navbar-right" align="right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle  nav navbar-nav navbar-right" align="right" data-toggle="dropdown"><%= "#{current_user.name}" %><b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'Home', welcome_index_path %></li>
+              <li class="divider"></li>
+              <% if current_user.admin? %>
+                <li>
+                  <%= link_to users_admin_dashboard_path, class: 'dropdown-menu-li' do %>
+                    <span class='glyphicon glyphicon-user'></span>
+                      Admin Dashboard
+                  <% end %>    
+                </li>
+              <% end %>
+                <li>
+                    <%= link_to user_path(current_user.id), class: 'dropdown-menu-li' do %>
+                      <span class='glyphicon glyphicon-eye-open'></span>
+                      View Profile
+                    <% end %>        
+                </li> 
+                <li>
+                    <%= link_to edit_user_path(current_user.id), class: 'dropdown-menu-li' do %>
+                      <span class="glyphicon glyphicon-pencil"></span>
+                      Edit Profile
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to logout_path, class: 'dropdown-menu-li' do %>
+                      <span class="glyphicon glyphicon-log-out"></span>
+                        Log Out
+                    <% end %>    
+                </li>
+            </ul>
+          </li>
+        </ul>    
+
+      <% end %>  
+    </div>
+  </div>
+</nav>
+
+<script type="text/javascript">
+  $(document).on('click','.navbar-collapse.in',function(e) {
+    if( $(e.target).is('a') ) {
+        $(this).collapse('hide');
+    }
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

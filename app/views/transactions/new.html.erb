@@ -1,0 +1,26 @@
+<div class="container">
+   <h1 id="header"><b>Welcome TO A New Transaction</b></h1>
+   <div class="row">
+     <div class="col-md-offset-4 col-md-4 col-sm-12 col-xs-12">      
+       <div class="buy-stocks">
+         <%= form_for (@transaction) do |tran| %>
+            <b>Company:</b> <i><%= Company.find_by_id(@company_id).name %></i><br>
+            <b>Stock: </b><i><%= Stock.find_by_id(@stock_id).name %></i>
+            <%= tran.hidden_field :comp_id, readonly:true , value: @company_id %><br />
+            <%= tran.hidden_field :stock_id, readonly:true , value: @stock_id %><br />
+            <%= tran.hidden_field :user_id, readonly:true , value: @user_id %><br />
+           <div> 
+             <b>Select Number Of Stocks: <%= tran.select :stocks_bought, options_for_select(1..@stav), { prompt: "select" } %></b>
+           </div> 
+
+           <% if @stav>0 %>  
+             <div class="actions"><%= tran.submit 'Buy Stock' %></div>
+           <% else %>
+             <p>Not Available</p>
+           <% end %>    
+         <% end %>  
+        </div>  
+           <%= link_back(company_path(Stock.find_by_id(@stock_id).company)) %>
+      </div>
+    </div>    
+</div>    

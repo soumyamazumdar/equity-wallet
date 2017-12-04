@@ -1,0 +1,57 @@
+// Place all the styles related to the Transactions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.view-user-transaction{
+  font-size: 22px;
+        text-shadow: 4px 4px 4px #aaa;
+}
+
+
+.buy-stocks, .sell-stocks{
+	border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 20px; 
+    width: 420px;
+    height: 250px; 
+    box-shadow: 10px 10px 5px grey;
+
+    p{
+    text-align: center;
+    padding-top: 50px;
+    }
+}
+
+.actions{
+  margin-top: 20px;
+  margin-bottom: 10px;
+  }
+
+#total_purchase, #total_sold{
+	text-align: center;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+#total_purchase{
+	border-right: 2px solid grey;
+}
+
+#profit{
+	text-align: center;
+	padding-top: 30px;
+	border-top: 2px dotted grey;
+}
+
+#stocks_bought, #stocks_sold{
+	text-align: center;
+	margin-top: 60px;
+	margin-bottom: 50px;
+}
+
+#stocks_bought{
+	border-right: 3px solid grey;
+}
+
+
+

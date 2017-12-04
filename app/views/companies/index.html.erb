@@ -1,0 +1,46 @@
+<div class="container company-index">  
+	<h1 id="header"><small><%= pluralize_without_count(@companies.count, 'Listing Company', ':') %></small></h1>	
+
+  <div id="table_scroll">
+	<table class="table table-hover table-dark">
+	  <thead class="thead-dark">
+	  	<tr>
+			<th scope="col">Name</th>
+			<th scope="col">Unique Id</th>
+			<th scope="col"></th>
+			<% if current_user.admin? %>
+			  <th scope="col"></th>
+			  <th scope="col"></th>
+			<% end %>  
+		</tr>
+	  </thead>
+	  <tbody>
+		<!-- <div id="company_list"> -->
+			<% @companies.each do |company| %>
+			  <tr>
+			  	<td id="td"><%= company.name %></td>
+			  	<td id="td"><%= company.unique_id %></td>
+			  	<td><%= link_to 'Show', company_path(company), class:"link-to" %></td>
+			  	<% if current_user.admin? %>
+			  	  <td><%= link_to 'Edit', edit_company_path(company.id), class:"link-to" %></td>
+			  	  <td><%= delete_link(company_path(company.id)) %></td>
+			  	<% end %>  
+			  </tr>
+			<% end %>  
+		<!-- </div>	 -->
+	  </tbody>		
+	</table>	
+  </div>	
+
+	<% if current_user.id==17 %>
+		<%= link_to new_company_path do %>
+		  <button type="button" class="btn btn-outline-light" id="btn">Add New Company</button>
+		<% end %> 
+		<%= link_to users_path do %>
+		  <button type="button" class="btn btn-outline-light" id="btn">Index Users</button>
+		<% end %>
+	<% end %>
+
+	<%= link_back(welcome_index_path) %> 
+		
+</div>	

@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+	  <div class="col-md-offset-4 col-md-4 col-sm-12 col-xs-12">      
+	    <div class="show-details">
+	      <b><small>Transaction Details</small></b><br><br>
+		  <% @price = Stock.find(@transaction.stock_id).price %>
+		  <p><b>User Name:</b> <i><%= @user = User.find(@transaction.user_id).name %></i></p>
+		  <p><b>Company Name:</b> <i><%= @comp = Company.find(@transaction.comp_id).name %></i></p>
+		  <p><b>Stock Name:</b> <i><%= @st = Stock.find(@transaction.stock_id).name %></i></p>
+		  <p><b>Stocks Bought:</b> <i><%= @transaction.stocks_bought %></i></p>
+		  <p><b>Total Cost:</b> <i><%= @tcost = @transaction.stocks_bought*@price %></i></p>
+		  <p><b>Purchase Date:</b> <i><%= @transaction.created_at.strftime("   %d %b. %Y") %></i></p>
+		  <p><b>Purchase Time:</b> <i><%= @transaction.created_at.strftime("%H:%M") %></i></p>
+		</div>  
+
+		<%= link_back(transactions_path) %>    
+
+	  </div>
+  </div>	  
+</div>    
+
+

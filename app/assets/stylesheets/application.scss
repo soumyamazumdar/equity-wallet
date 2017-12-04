@@ -1,0 +1,245 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+#flash_msg{
+	color: red;
+}
+.navbar-brand{
+  font-family: 'Fredoka One', cursive;
+  color:white;
+  #brand_logged_out{
+    padding-top:8px;
+  }
+  #brand_logged_out{
+  padding-top: 8px;
+  }
+  span{
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  } 
+}
+.navbar-brand:hover, .navbar-brand:active, .navbar-brand:focus{
+  color: white;
+}
+#header{
+	text-align: center;
+}
+
+#btn{
+margin-top: 15px;
+  border-style: solid;
+    border-color: #5DBCD2 ;
+    background-color: #F2F1F0;
+}
+#btn:hover{
+  background-color: white;
+}
+
+.show-details{
+    border: 2px solid #73AD21;
+    padding: 20px; 
+    width: 420px;
+    height: 350px; 
+    box-shadow: 10px 10px 5px grey;
+    margin-bottom: 30px;
+
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1); 
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1); 
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1);
+    transition: all 200ms ease-in;
+    transform: scale(1);  
+}
+.show-details:hover{
+    box-shadow: 10px 10px 5px grey;
+    z-index: 2;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.1);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.1);   
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.1);
+    transition: all 200ms ease-in;
+    transform: scale(1.1);
+}
+
+#mynav{
+    background-color: #283E4A;
+    border-radius: 0;
+    .dropdown-toggle{
+    color: white;
+    margin: 0;
+    }
+.divider{
+    margin: 0;
+    }
+}
+#mynav .dropdown-toggle:hover,#mynav .dropdown-toggle:focus{
+  color: #337AB7;
+}
+#mynav .dropdown-menu-li:hover{
+}
+#mynav .dropdown-menu{
+
+  background-color: #337AB7;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.signup-box1{
+   margin-top: 20px;
+   #text{
+   text-align: center;
+   padding: 10px 0px 20px 0px;
+   border-bottom: 1.5px solid #D1D3D5;
+   background-color: #F6F8FA;
+   }
+   #form{
+   padding: 10px 15px 10px 15px;
+   background-color: #EDF0F3;
+   }
+
+   #form_text{
+   font-weight: lighter;
+   margin-top: 8px;
+   margin-botton: 8px;
+   text-align: center;
+   }
+
+   label{
+   font-weight: lighter;
+   width: 100%;
+   display: inline-block;
+   padding-top: 5px ;
+   }
+
+   .actions{
+  margin-top: 20px;
+  margin-bottom: 10px;
+  }
+  .input{
+  width: 100%;
+  border-radius: 0px;
+  }
+}
+
+
+#session_new, .users_new{
+    background-image: url('/collage31.jpg');
+ background-repeat: no-repeat;
+ background-size: cover;
+ min-width: 100%;
+   min-height: 100%;
+}
+
+#footer {
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+    height: 50px;
+    padding-top: 13px;
+    background-color: #283E4A;
+    .footer-block {
+      margin: 20px 0;
+    }
+    ul{
+    float: right;
+    padding-left: 0px;
+    }
+    #copyright{
+    float: left;
+    color: white;
+    span{
+    display: inline-block;
+    }
+    }
+  }
+  #footer .inline-list-item{
+  color: white;
+  }
+  #footer .list-inline:hover{
+  color: #337AB7;
+  } 
+
+  html {
+  min-height: 100%;
+  position: relative;
+  }
+  body {
+    margin-bottom: 50px;
+  }
+
+  #div_style{
+    box-shadow: 10px 10px 5px grey;
+    margin-top: 100px;
+    height: 250px;
+
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1); 
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1); 
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1);
+    transition: all 200ms ease-in;
+    transform: scale(1);   
+
+    p{
+    text-align: center;
+    padding-top: 100px;
+    }
+}
+
+#div_style:hover{
+    box-shadow: 0px 0px 150px #000000;
+    z-index: 2;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.3);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.3);   
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.3);
+    transition: all 200ms ease-in;
+    transform: scale(1.3);
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#table_scroll{
+  height:300px;
+  overflow:auto;  
+  margin-top:20px;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}

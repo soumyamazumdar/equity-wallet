@@ -1,0 +1,40 @@
+<div class="container">
+	<div id="header">
+	  <h1><small>Transaction Summary For</small></h1>
+	  <b>Company:</b> <i><%= Company.find_by_id(@st.company_id).name %></i><br />	
+	  <b>Stock:</b> <i><%= Stock.find_by_id(@st.id).name %></i>
+	</div>
+	<% @tcost = 0 %>
+	<% @stbought=0 %>
+	<% @tsold=0 %>
+	<% @stsoldcount=0 %>
+
+	<% current_user.transactions.each do |i| %>
+		<% if @st.id==i.stock_id %>
+		  <%# @test += i.total_cost %>
+		  <% @tcost = @tcost+(Stock.find(i.stock_id).price*i.stocks_bought) %>
+		  <% @stbought += i.stocks_bought %>
+		  <% @tsold += i.sold_total %>
+		  <% @stsoldcount += i.stocks_sold %>
+		<% end %>
+	<% end %>	
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-6">
+				<div id="stocks_bought">
+					<p>Stocks Bought: <%= @stbought %></p>
+					<p> Total Cost Price: <%= @tcost %>  </p>
+				</div>
+			</div>
+	        <div class="col-xs-12 col-sm-6">
+	        	<div id="stocks_sold">
+					<p>Stocks Sold: <%= @stsoldcount %></p>
+					<p>Total Selling Price: <%= @tsold %></p>
+				</div>
+			</div>
+		</div>
+	</div>
+		<%= link_back(stocks_user_specific_stocks_path(c: Company.find_by_id(@st.company_id))) %>
+</div>	
+

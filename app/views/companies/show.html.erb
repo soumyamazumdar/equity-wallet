@@ -1,0 +1,56 @@
+<head>
+  
+</head>
+<body class="company-show">
+  <div class="container ">
+    <div>
+        <h1 id="header"><small><%= pluralize_without_count(@company.stocks.count, 'Listing Stock', ':') %></small></h1>
+    </div>
+    <div>
+      <table>
+      	<tr>
+      		<th>Name</th>
+      		<th>Total Stocks</th>
+      		<th>Stocks Available</th>
+      		<th>Price</th>
+          <th></th>
+          <% if current_user.admin? %>
+            <th></th>
+            <th></th>
+          <% end %>  
+      	</tr>
+        <div>
+        	<% @company.stocks.each do |stock| %>
+          	  <tr>
+          	  	<td id="td"><%= stock.name %></td>
+          	  	<td id="td"><%= stock.total_stocks %></td>
+          	  	<td id="td"><%= stock.stocks_available %></td>
+          	  	<td id="td"><%= stock.price %></td>
+                <% if current_user.admin? %>
+                  <td><%= edit_link(edit_stock_path(stock)) %></td>
+                  <% if stock.total_stocks==stock.stocks_available  %>
+                    <td><%= delete_link(company_path(stock_path(stock,comp_id: @company))) %></td>
+                  <% end %>    
+                <% else %>            
+                  <% if stock.stocks_available>=1 %>
+            	  	  <td><%= link_to 'Buy Stock', new_user_transaction_path( user_id: @current_user.id, stock_id: stock.id), class: 'link-to' %></td>
+                  <% else %>
+                    <td id="td"><p><i>Stocks Not Available</i></p></td>
+                  <% end %>    
+                <% end %>  
+          	  </tr>
+          <% end %>  
+        </div>  
+      </table>
+    </div>  
+
+    <!-- <div class="image"><%#= image_tag image_url('/stocks.jpg') %></div> -->
+
+    <%= link_back(companies_path) %>
+    <% if current_user.admin? %>
+      <%= link_to new_company_stock_path(@company) do %>
+        <button type="button" class="btn btn-outline-light" id="btn">Create Stock</button>
+      <% end %> 
+    <% end %>  
+  </div>
+</body>

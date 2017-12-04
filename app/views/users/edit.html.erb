@@ -1,0 +1,11 @@
+<div class="container">
+	<h1 id="header"><b>Update Profile</b></h1>
+
+	<%= render 'form' %>
+
+	<% if current_user.admin? %>
+	  <%= link_back(users_path) %>
+	<% else %>
+	  <%= link_back(welcome_index_path) %> 
+	<% end %> 
+</div>	   
