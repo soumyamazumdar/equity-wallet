@@ -3,13 +3,13 @@ class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create, :contact_us, :about_us]
   # before_action :already_login
   before_action :authorize, only: [:index, :admin_dashboard, :make_admin]
+  before_action :set_id, only: [:show, :edit, :update, :destroy]
 
   def index
      @users = User.search(params[:search])
   end
 
   def show
-  	@user = User.find(params[:id])
   end
 
   def new
@@ -17,7 +17,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
   
   def create
@@ -32,8 +31,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-
     if @user.update(users_params)
       redirect_to @user
     else
@@ -42,7 +39,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
     @user.destroy
 
     redirect_to users_path
@@ -70,6 +66,10 @@ class UsersController < ApplicationController
   end
 
   def help
+  end
+
+  def set_id
+    @user = User.find(params[:id])
   end
   
   private

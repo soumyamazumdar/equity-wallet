@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
 	  <div class="col-md-offset-4 col-md-4 col-sm-12 col-xs-12">      
-	    <div class="stocks-bought-details">
+	    <div class="show-details">
 	      <b><small>Transaction Details</small></b><br><br>
 		  <% @price = Stock.find(@transaction.stock_id).price %>
 		  <p><b>User Name:</b> <i><%= @user = User.find(@transaction.user_id).name %></i></p>
@@ -13,12 +13,7 @@
 		  <p><b>Purchase Time:</b> <i><%= @transaction.created_at.strftime("%H:%M") %></i></p>
 		</div>  
 
-		<%= link_to transactions_path do %>
-		  <button type="button" class="btn btn-outline-light" id="btn">
-		    <span class="glyphicon glyphicon-hand-left"></span>
-		      Back
-		  </button>
-		<% end %>    
+		<%= link_back(transactions_path) %>    
 
 	  </div>
   </div>	  

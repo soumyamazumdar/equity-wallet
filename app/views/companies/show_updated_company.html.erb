@@ -1,27 +1,15 @@
 <div class="container">
-	<h1 id="header"><small>Stock Details</small></h1>
+	<h1 id="header"><small>Company Details</small></h1>
 	<div class="row">
 	  <div class="col-md-4 col-md-offset-4">
 		  <div class="show-details">
 		    <p>
 		      <strong>Company Name:</strong>
-		      <%= Company.find_by_id(@stock.company_id).name %>	
+		      <%= @company.name %>	
 		    </p>
 			<p>
-			  <strong>Stock Name:</strong>
-			  <%= @stock.name %>
-			</p>
-			<p>
-			  <strong>Total Stocks:</strong>
-			  <%= @stock.total_stocks %>
-			</p> 
-			<p>
-			  <strong>Stocks Available:</strong>
-			  <%= @stock.stocks_available %>	
-			</p>
-			<p>
-			  <strong>Price:</strong>
-			  <%= @stock.price %>	
+			  <strong>Unique Id:</strong>
+			  <%= @company.unique_id %>	
 			</p>
 		  </div> 	
 			

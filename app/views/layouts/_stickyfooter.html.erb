@@ -1,16 +1,25 @@
 <footer id="footer">
     <div class="container">
-      <ul>
-        <% if !logged_in? %>
-	      <li><%= link_to 'About Us', users_about_us_path %></li>
-	      <li>
-	        <%= link_to users_contact_us_path do %>
-	          <span class='glyphicon glyphicon-earphone'></span>
-	          Contact Us!
-	        <% end %>
-	    <% else %>
-	      </li><%= link_to 'Help', users_help_path %></li>
-	    <% end %>  
-	  </ul>     
+      <div class="row">
+	      <div class="col-xs-12 col-sm-6" id="copyright">
+	         <span>©Copyright 2010-2017, Equity Wallet.</span>
+	         <span>All rights reserved</span>
+	      </div>
+	      <% if !logged_in? %>
+	        <ul class="col-xs-12 col-sm-6 list-inline">
+		      <li class="inline-list-item pull-right"><%= link_to 'About Us', users_about_us_path, class: 'inline-list-item' %></li>
+		      <li class="inline-list-item pull-right">
+		        <%= link_to users_contact_us_path, class: 'inline-list-item' do %>
+		          <span class='glyphicon glyphicon-earphone'></span>
+		          Contact Us!
+		        <% end %>
+		      </li>
+		    </ul>    
+		  <% else %>
+		    <ul  class="col-xs-12 col-sm-6 list-inline" style="float: right;">
+		      <li class="inline-list-item"><%= link_to 'Help', users_help_path, class: 'inline-list-item' %></li>
+		    </ul>  
+		  <% end %>  
+	  </div>	      
     </div>
 </footer>

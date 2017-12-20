@@ -1,11 +1,12 @@
 class TransactionsController < ApplicationController
 
+  before_action :set_id, only: [:show,:edit,:update,:destroy]
+
   def index
     @transactions = Transaction.all
   end
 
   def show
-    @transaction = Transaction.find(params[:id])
   end
 
   def new
@@ -19,7 +20,6 @@ class TransactionsController < ApplicationController
   end
 
   def edit
-    @transaction = Transaction.find(params[:id])
   end
 
   def create
@@ -38,7 +38,6 @@ class TransactionsController < ApplicationController
   end
 
   def update
-    @transaction = Transaction.find(params[:id])
     @stock = Stock.find(@transaction.stock_id)
     if @transaction.update(transactions_params)
       @transaction.stocks_sold_count += @transaction.stocks_sold
@@ -53,7 +52,6 @@ class TransactionsController < ApplicationController
   end
 
   def destroy
-    @transaction = Transaction.find(params[:id])
     @transaction.destroy
 
     redirect_to transactions_path
@@ -85,7 +83,12 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:t_id])
   end
 
+  def set_id
+    @transaction = Transaction.find(params[:id])
+  end
+
   private
+  
     def transactions_params
       params.require(:transaction).permit(:stocks_bought, :total_cost, :comp_id, :stock_id, :user_id, :Purchasetotal,:stocks_sold)
     end

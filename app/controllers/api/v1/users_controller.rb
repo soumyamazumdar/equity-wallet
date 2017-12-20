@@ -1,4 +1,4 @@
-class Api::V1::UsersController < ApiController
+class Api::V1::UsersController < Api::V1::ApplicationController
   
   before_action :set_id,only: [:show, :edit, :update, :destroy]
 

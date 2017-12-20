@@ -22,8 +22,8 @@
 			  	<td id="td"><%= company.unique_id %></td>
 			  	<td><%= link_to 'Show', company_path(company), class:"link-to" %></td>
 			  	<% if current_user.admin? %>
-			  	  <td><%= link_to 'Edit', edit_company_path(company), class:"link-to" %></td>
-			  	  <td><%= link_to 'Destroy', company_path(company), method: :delete, data: { confirm: 'Are you Sure?'}, class:"link-to" %></td>
+			  	  <td><%= link_to 'Edit', edit_company_path(company.id), class:"link-to" %></td>
+			  	  <td><%= delete_link(company_path(company.id)) %></td>
 			  	<% end %>  
 			  </tr>
 			<% end %>  
@@ -41,11 +41,6 @@
 		<% end %>
 	<% end %>
 
-	<%= link_to welcome_index_path do %>
-	    <button type="button" class="btn btn-outline-light" id="btn">
-	    	<span class="glyphicon glyphicon-hand-left"></span>
-	    	Back
-	    </button>
-	<% end %> 
+	<%= link_back(welcome_index_path) %> 
 		
 </div>	

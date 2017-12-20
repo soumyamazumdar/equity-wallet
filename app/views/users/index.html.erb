@@ -35,8 +35,8 @@
 						  	<td><%= user.created_at.strftime("%d %b. %Y") %>,<%= user.created_at.strftime("  %H:%M") %></td>
 						  	<td><%= user.last_seen_at.strftime("%d %b. %Y") %>,<%= user.last_seen_at.strftime("  %H:%M") %></td>
 						  	<td><%= link_to 'Show', user_path(user) %></td>
-						  	<td><%= link_to 'Edit', edit_user_path(user) %></td>
-						  	<td><%= link_to 'Delete', user_path(user), method: :delete, data: { confirm: 'Are you sure'} %></td>
+						  	<td><%= edit_link(edit_user_path(user)) %></td>
+						  	<td><%= delete_link(user_path(user)) %></td>
 						  	<% if !user.admin? %>
 						  	  <td><%= link_to 'Make Admin', users_make_admin_path(u_id: user.id), data: { confirm: "Are you sure?" } %></td>
 						  	<% else %>

@@ -1,13 +1,13 @@
 class StocksController < ApplicationController
 
   before_action :authorize, except: [:index, :show, :user_specific_stocks, :update_stocks_available]
+  before_action :set_id, only: [:show,:edit, :update, :destroy]
 
   def index
   	@stocks = Stock.all
   end
 
   def show
-    @stock = Stock.find(params[:id])
   end
 
   def new
@@ -16,7 +16,6 @@ class StocksController < ApplicationController
   end
 
   def edit
-    @stock = Stock.find(params[:id])
   end
 
   def create 
@@ -26,7 +25,6 @@ class StocksController < ApplicationController
   end
 
   def update
-    @stock = Stock.find(params[:id])
 
     if @stock.update(stocks_params)
       redirect_to @stock
@@ -37,8 +35,7 @@ class StocksController < ApplicationController
 
   def destroy
   	@company = Company.find(params[:comp_id])
-    @st = Stock.find(params[:id])
-  	@st.destroy
+  	@stock.destroy
   	  redirect_to company_path(@company)
   end
 
@@ -57,8 +54,13 @@ class StocksController < ApplicationController
     @comp = Company.find(params[:c])
   end
 
+  def set_id
+    @stock = Stock.find(params[:id])
+  end
+
 
   private
+  
     def stocks_params
     	params.require(:stock).permit(:name,:total_stocks,:stocks_available,:price,:stocks_sold)
     end

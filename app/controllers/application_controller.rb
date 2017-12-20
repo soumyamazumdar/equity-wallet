@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::Base
+class ApplicationController < ActionController::Base 
   protect_from_forgery with: :exception
   include SessionsHelper
   before_action :require_login
@@ -6,16 +6,16 @@ class ApplicationController < ActionController::Base
 
 private
 
-	def authorize
-		if !@current_user.admin?
-			flash[:error] = "You must be an admin to access this section"
-			redirect_to welcome_index_path 
-		end
-	end
+  def authorize
+    if !@current_user.admin?
+      flash[:error] = "You must be an admin to access this section"
+      redirect_to welcome_index_path 
+    end
+  end
 
-	def set_last_seen_at
+  def set_last_seen_at
       current_user.update_column(:last_seen_at, Time.current)
-	end
+  end
 
  
     def require_login
@@ -24,5 +24,4 @@ private
         redirect_to login_url # halts request cycle
       end
     end
-
 end

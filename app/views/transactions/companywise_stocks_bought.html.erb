@@ -36,12 +36,7 @@
     </div>  
   <% else %>
     <p id="header"><b>No Transactions yet</b></p>
-    <%= link_to welcome_index_path do %>
-      <button type="button" class="btn btn-outline-light" id="btn">
-      <span class='glyphicon glyphicon-hand-left'></span>
-        Back
-      </button> 
-    <% end %> 
+    <%= link_back(welcome_index_path) %>
   <% end %>
 </div>     
 

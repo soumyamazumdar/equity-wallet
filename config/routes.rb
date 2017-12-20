@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :api do
+  namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
 
       resources :users do
@@ -14,21 +14,27 @@ Rails.application.routes.draw do
 
       resources :stocks
       resources :transactions
+
+
       
+      post '/login', to: "sessions#create" 
+      get '/logout', to: 'sessions#destroy'
     end
   end
 
   get 'sessions/new'
-   
+     get 'api/v1/welcome/index'
   get 'welcome/index'
 
   # resources :sessions
 
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
-  post 'sessions/create'
+   # post '/login', to: "sessions#create"
+    post 'sessions/create'
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'stocks/update_stocks_available'
+  get 'stocks/user_specific_stocks'
   get 'transactions/view_user_transaction'
   get 'transactions/companywise_stocks_bought'
   get 'transactions/stockwise_total_transaction'
@@ -36,7 +42,7 @@ Rails.application.routes.draw do
   get 'transactions/sell_stock'
   get 'transactions/update_number_of_stock'
   get 'transactions/success'
-  get 'stocks/user_specific_stocks'
+  get 'companies/show_updated_company'
   get 'users/admin_dashboard'
   get 'users/make_admin'
   get 'users/contact_us'

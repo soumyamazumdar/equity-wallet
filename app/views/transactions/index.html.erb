@@ -25,26 +25,16 @@
 				  	<td><%= t.stocks_bought-t.stocks_sold_count %></td>
 				  	<td><%= link_to 'Show', transaction_path(t) %></td>
 				  	<td><%= link_to_if t.stocks_sold_count<t.stocks_bought, 'Sell', edit_transaction_path(t) %></td>
-				  	<td><%= link_to 'Destroy', transaction_path(t), method: :delete, data: { confirm: 'Are you sure'} %></td>
+				  	<td><%= delete_link(transaction_path(t)) %></td>
 				  </tr>
 			   <% end %>	
 			<% end %>  
 		  </table>
 	  </div>
-	  <%= link_to transactions_view_user_transaction_path do %>
-	    <button type="button" class="btn btn-outline-light" id="btn">
-	    <span class='glyphicon glyphicon-hand-left'></span>
-	      Back
-	    </button> 
-	  <% end %>  
+	  <%= link_back(transactions_view_user_transaction_path) %> 
    <% else %>
         <p id="header"><b>No Transaction yet</b></p>
-        <%= link_to welcome_index_path do %>
-	      <button type="button" class="btn btn-outline-light" id="btn">
-	      <span class='glyphicon glyphicon-hand-left'></span>
-	        Back
-	      </button> 
-	    <% end %> 		  
+        <%= link_back(welcome_index_path) %> 		  
    <% end %>  
 </div>    
 

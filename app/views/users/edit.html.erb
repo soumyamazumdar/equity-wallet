@@ -4,18 +4,8 @@
 	<%= render 'form' %>
 
 	<% if current_user.admin? %>
-	  <%= link_to users_path do %>
-		    <button type="button" class="btn btn-outline-light" id="btn">
-		    <span class='glyphicon glyphicon-hand-left'></span>
-		      Back
-		    </button> 
-	  <% end %> 
+	  <%= link_back(users_path) %>
 	<% else %>
-	  <%= link_to welcome_index_path do %>
-		    <button type="button" class="btn btn-outline-light" id="btn">
-		    <span class='glyphicon glyphicon-hand-left'></span>
-		      Back
-		    </button> 
-	  <% end %> 
+	  <%= link_back(welcome_index_path) %> 
 	<% end %> 
 </div>	   

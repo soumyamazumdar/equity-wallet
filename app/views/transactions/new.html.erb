@@ -20,15 +20,7 @@
            <% end %>    
          <% end %>  
         </div>  
-           <%= link_to company_path(Stock.find_by_id(@stock_id).company) do %>
-             <button type="button" class="btn btn-outline-light" id="btn">
-               <span class="glyphicon glyphicon-hand-left"></span>
-               Back
-             </button>
-           <% end %> 
-
-         <%# end %>  
-         
+           <%= link_back(company_path(Stock.find_by_id(@stock_id).company)) %>
       </div>
     </div>    
 </div>    
